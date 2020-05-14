@@ -1,9 +1,12 @@
 
 var player = new QMplayer();
-player.play("003zahVQ0XimY0");
+player.play("000WKvUf0GuCyl");
 print("Initial Song Loaded！")
 print("Player State:" + player.state);
-msprev("Summer Feeling","Vermair","","http://39.101.194.181/proj/qqmusic/T002R300x300M000003rycDS0ktpT2_1.jpg");
+msprev("Despair","LookedatHerFore","","http://39.101.194.181/proj/qqmusic/T002R300x300M000003rycDS0ktpT2_1.jpg");
+
+
+
 
 function msprev(songname,singer,aubum,image) {
   if(!aubum){
@@ -46,16 +49,15 @@ function throughid() {
     }
     print("Input Box Value：" + ipt);
     player.play(ipt);
-    var duration = player.duration;
+    var duration = "NaN";
+    
     print('Duration:' + duration);
-    if(player.duration == "NaN") {
+    /*if(duration == "NaN") {
       print("Error:Cannot Fetch Duration，Maybe Song Not Found!");
       alert('错误：无法获取曲目时长，可能没有该曲目！');
       return;
-    }
+    }*/
 
-
-    
     msprev(ipt,"Unknown Artist","Unknown Aubum","http://39.101.194.181/proj/qqmusic/throughid.jpg");
     
   	var songname = document.getElementById("songname");
@@ -64,11 +66,14 @@ function throughid() {
   	var singer = document.getElementById("singer");
   	singer.innerHTML = "未知艺术家";
 
-  	var aubum = document.getElementById("aubum");
-  	aubum.src = "throughid.jpg";
-  	var duration = player.duration;
-  	var progress = document.getElementById("progressinner");
-	  var currenttime = player.currentTime;
+    var aubum = document.getElementById("aubum");
+    aubum.src = "throughid.jpg";
+
+    var songmid = document.getElementById("songmid");
+    songmid.innerHTML = "曲目ID：" + ipt;
+
+  	var time = document.getElementById("time");
+    time.innerHTML = "0.000000s/" + player.duration + "s";
 }
 
 
