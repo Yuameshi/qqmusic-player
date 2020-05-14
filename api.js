@@ -7,7 +7,6 @@ msprev("Despair","LookedatHerFore","","http://39.101.194.181/proj/qqmusic/T002R3
 
 
 
-
 function msprev(songname,singer,aubum,image) {
   if(!aubum){
     aubum = songname;
@@ -111,7 +110,7 @@ function playorpause() {
 
 }
 
-function searchprogress() {
+function fetchprogress() {
   var progress = document.getElementById("progressinner");
   var timecount = document.getElementById("time");
 	print("Fetching Progress...");
@@ -119,10 +118,19 @@ function searchprogress() {
 	var duration = player.duration;
 	print("Duration：" + duration);
 	var current = player.currentTime;
-	print("Current Time：" + current);
+  print("Current Time：" + current);
+  var wrtdura_min = Math.floor(duration / 60);
+  var wrtdura_sec = Math.round(duration % 60);
+  var wrtcurr_min = Math.floor(current / 60);
+  var wrtcurr_sec = Math.round(current % 60);
 	var wid = current / duration;
 	//写进页面
-	var wrt = Math.round(current) + '/' + Math.round(duration) + '秒';
+  if(Math.floor(wrtcurr_sec / 10) == ""){
+    var wrt = wrtcurr_min + ':0' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
+  } else {
+    var wrt = wrtcurr_min + ':' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
+
+  }
 	timecount.innerHTML = wrt;
 	timecount.style.color = "#000";
 	progress.style.width =  wid * 100 + "%";
