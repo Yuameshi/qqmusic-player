@@ -73,7 +73,7 @@ function throughid() {
     songmid.innerHTML = "曲目ID：" + ipt;
 
   	var time = document.getElementById("time");
-    time.innerHTML = "0.000000s/" + player.duration + "s";
+    time.innerHTML = "0s/" + player.duration + "s";
 }
 
 
@@ -122,7 +122,7 @@ function searchprogress() {
 	print("Current Time：" + current);
 	var wid = current / duration;
 	//写进页面
-	var wrt = current + 's/' + duration + 's';
+	var wrt = Math.round(current) + '/' + Math.round(duration) + '秒';
 	timecount.innerHTML = wrt;
 	timecount.style.color = "#000";
 	progress.style.width =  wid * 100 + "%";
