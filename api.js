@@ -1,4 +1,4 @@
-
+print("网易云就是废物好吧！");
 var player = new QMplayer();
 player.play("000WKvUf0GuCyl");
 print("Initial Song Loaded！")
@@ -43,7 +43,7 @@ function throughid() {
     iptbox.value = "";
     if (!ipt) {
       print('Error：Empty String！');
-      alert('曲目名/曲目ID/曲目路径不能为空！');
+      alert('曲目名/曲目ID不能为空！');
       return;
     }
     print("Input Box Value：" + ipt);
@@ -59,8 +59,11 @@ function throughid() {
 
     msprev(ipt,"Unknown Artist","Unknown Aubum","http://39.101.194.181/proj/qqmusic/throughid.jpg");
     
-  	var songname = document.getElementById("songname");
-  	songname.innerHTML = ipt;
+    var songname = document.getElementById("songname");
+    songname.innerHTML = ipt;
+
+    var title = document.getElementById("title");
+    title.innerHTML = ipt + ' · QQ音乐播放器';
 
   	var singer = document.getElementById("singer");
   	singer.innerHTML = "未知艺术家";
@@ -84,7 +87,7 @@ function throughname() {
     iptbox.value = "";
     if (!ipt) {
       print('Error：Empty String！');
-      alert('曲目名/曲目ID/曲目路径不能为空！');
+      alert('曲目名/曲目ID不能为空！');
       return;
     }
     var script = document.createElement("script")
