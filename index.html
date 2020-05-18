@@ -15,16 +15,17 @@
 
 <body>
 	<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="api.js"></script>
 	<div class="main">
 
 	<img src="logo.png">
-	<input id="iptbox" class="ipt" type="text" name="w" placeholder=" 曲目名/曲目ID" required autocomplete="off">
+	<input id="iptbox" type="text" name="w" placeholder=" 曲目名/曲目ID" required autocomplete="off">
 	<button style="left:70%" onclick="throughname()">通过曲目名播放</button>
 	<button style="left:85%" onclick="throughid()">通过曲目ID播放</button>
 	</div>
 
-	<div class="infocontain">
+	<div id="infocontain">
 		<img id="aubum" src="T002R300x300M000003rycDS0ktpT2_1.jpg">
 		<p id="songname">Despair</p>
 		<p id="singer">LookedatHerFore</p>
@@ -35,11 +36,11 @@
 		<button id="playpause" onclick="playorpause()">►</button>
 		<button id="searchprogress" onclick="fetchprogress()">查询进度</button>
 		
-		<div class="progress" id="progressbar">
-			<div class="inner" id="progressinner"></div>
+		<div id="progressbar" onclick="changeprogress()">
+			<div id="progressinner" onclick="changeprogress()"></div>
 		</div>
-	
 	</div>
+	<iframe seamless id="iframe" src="https://c.y.qq.com/soso/fcgi-bin/music_search_new_platform?searchid=53806572956004615&t=1&aggr=1&cr=1&catZhida=1&lossless=0&format=json&flag_qc=0&p=1&n=2&w=aaa"></iframe>
 	<div class="copyrights">
 		<div class="footer">2020  Copyrights © 我爱C艹 - <span>All Rights Reserved</span><br><a href="http://ilovecpp.pw/index.html" title="主站">欢迎来访主站</a><br>本作品采用<a rel="license" target="__blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>与<a target="__blank" href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0协议</a>进行许可。<br>
 </div>

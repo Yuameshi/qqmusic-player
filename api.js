@@ -1,4 +1,5 @@
 print("网易云就是废物好吧！");
+var api = document.getElementById("iframe");
 var player = new QMplayer();
 player.play("000WKvUf0GuCyl");
 print("Initial Song Loaded！")
@@ -137,4 +138,45 @@ function fetchprogress() {
 	timecount.innerHTML = wrt;
 	timecount.style.color = "#000";
 	progress.style.width =  wid * 100 + "%";
+}
+
+
+function changeprogress(ev) {
+    ev = ev || window.event;
+    var progress = document.getElementById("progressbar");
+    var progressinner = document.getElementById("progressinner");
+    var outside_offsetL = document.getElementById("infocontain").offsetLeft;
+    var total_offsetL = outside_offsetL + progress.offsetLeft;
+    print("Total Offset=>Left:" + total_offsetL);
+    var MousePosX = getMouseCoords(ev).x;
+    print("Mouse Position=>X:" + MousePosX);
+    print("Progress Bar=>Width:" + progress.offsetWidth);
+    var inner_width = ( MousePosX - total_offsetL) / progress.offsetWidth;
+    print("Progress=>Inner=>Width Will Be Changed:" + progressinner.offsetWidth / progress.offsetWidth + "%=>" + inner_width * 100 + "%");
+    progressinner.style.width =  inner_width * 100 + "%";
+    var target_time = player.duration * inner_width;
+    print("Time Will Be Changed:" + player.currentTime + "=>" + target_time);
+    player.currentTime = target_time;
+    var timecount = document.getElementById("time");
+    var dura_min = Math.floor(player.duration / 60);
+    var dura_sec = Math.round(player.duration % 60);
+    var curr_min = Math.floor(target_time / 60);
+    var curr_sec = Math.round(target_time % 60);
+    if(Math.floor(curr_sec / 10) == ""){
+      var wrt = curr_min + ':0' + curr_sec + '/' + dura_min + ':' + dura_sec;
+    } else {
+      var wrt = curr_min + ':' + curr_sec + '/' + dura_min + ':' + dura_sec;
+    }
+    timecount.innerHTML = wrt;
+}
+
+
+function getMouseCoords(ev) {
+    if (ev.pageX || ev.pageY) {
+        return {x: ev.pageX, y: ev.pageY};
+    }
+        return {
+        x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+        y: ev.clientY + document.body.scrollTop - document.body.clientTop
+    };
 }
