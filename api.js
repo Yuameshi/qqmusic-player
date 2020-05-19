@@ -6,7 +6,10 @@ print("Initial Song Loaded！")
 print("Player State:" + player.state);
 msprev("Despair","LookedatHerFore","","http://39.101.194.181/proj/qqmusic/T002R300x300M000003rycDS0ktpT2_1.jpg");
 
-
+window.onload=function(){
+  print("Started Auto Fetching Progress...");
+  setInterval(autofetchprogress,100);
+}
 
 function msprev(songname,singer,aubum,image) {
   if(!aubum){
@@ -96,7 +99,7 @@ function throughname() {
     print(script);
     document.body.appendChild(script);
     print("Input Box Value：" + iptbox.value);
-    alert('功能还没上线呢！');
+    alert('功能还没上线呢（咕咕咕）！');
 }
 
 //播放函数
@@ -117,27 +120,51 @@ function playorpause() {
 function fetchprogress() {
   var progress = document.getElementById("progressinner");
   var timecount = document.getElementById("time");
-	print("Fetching Progress...");
+  print("Fetching Progress...");
   var state = player.state;
-	var duration = player.duration;
-	print("Duration：" + duration);
-	var current = player.currentTime;
+  var duration = player.duration;
+  print("Duration：" + duration);
+  var current = player.currentTime;
   print("Current Time：" + current);
   var wrtdura_min = Math.floor(duration / 60);
   var wrtdura_sec = Math.round(duration % 60);
   var wrtcurr_min = Math.floor(current / 60);
   var wrtcurr_sec = Math.round(current % 60);
-	var wid = current / duration;
-	//写进页面
+  var wid = current / duration;
+  //写进页面
   if(Math.floor(wrtcurr_sec / 10) == ""){
     var wrt = wrtcurr_min + ':0' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
   } else {
     var wrt = wrtcurr_min + ':' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
 
   }
-	timecount.innerHTML = wrt;
-	timecount.style.color = "#000";
-	progress.style.width =  wid * 100 + "%";
+  timecount.innerHTML = wrt;
+  timecount.style.color = "#000";
+  progress.style.width =  wid * 100 + "%";
+}
+
+//懒得改布局了
+function autofetchprogress() {
+  var progress = document.getElementById("progressinner");
+  var timecount = document.getElementById("time");
+  var state = player.state;
+  var duration = player.duration;
+  var current = player.currentTime;
+  var wrtdura_min = Math.floor(duration / 60);
+  var wrtdura_sec = Math.round(duration % 60);
+  var wrtcurr_min = Math.floor(current / 60);
+  var wrtcurr_sec = Math.round(current % 60);
+  var wid = current / duration;
+  //写进页面
+  if(Math.floor(wrtcurr_sec / 10) == ""){
+    var wrt = wrtcurr_min + ':0' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
+  } else {
+    var wrt = wrtcurr_min + ':' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
+
+  }
+  timecount.innerHTML = wrt;
+  timecount.style.color = "#000";
+  progress.style.width =  wid * 100 + "%";
 }
 
 
