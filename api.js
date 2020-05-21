@@ -94,12 +94,15 @@ function throughname() {
       alert('曲目名/曲目ID不能为空！');
       return;
     }
-    var script = document.createElement("script")
-    //script.src = `https://c.y.qq.com/soso/fcgi-bin/music_search_new_platform?searchid=53806572956004615&t=1&aggr=1&cr=1&catZhida=1&lossless=0&format=json&flag_qc=0&p=1&n=2&w=${iptbox.value}`;
+    var newwindow = 'https://y.qq.com/portal/search.html#page=1&searchid=1&remoteplace=txt.yqq.top&t=song&w=' + ipt;
+    alert('即将打开一个新窗口，请在新窗口内选中希望播放的歌曲并使用曲目ID播放！\n如：\nURL为“https://y.qq.com/n/yqq/song/000WKvUf0GuCyl.html”\n则取“000WKvUf0GuCy”');
+    window.open(newwindow,'newwindow','height=700,width=600,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no, status=no');
+	  /*var script = document.createElement("script")
+    script.src = `https://c.y.qq.com/soso/fcgi-bin/music_search_new_platform?searchid=53806572956004615&t=1&aggr=1&cr=1&catZhida=1&lossless=0&format=json&flag_qc=0&p=1&n=2&w=${iptbox.value}`;
     print(script);
     document.body.appendChild(script);
     print("Input Box Value：" + iptbox.value);
-    alert('功能还没上线呢（咕咕咕）！');
+    alert('功能还没上线呢（咕咕咕）！');*/
 }
 
 //播放函数
