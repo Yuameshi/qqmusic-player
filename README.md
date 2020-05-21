@@ -7,9 +7,14 @@
 ## 关于/About
 
 这是一个自己写的，使用QQ音乐官方API
-[![官方API说明/Official API Description]](https://y.qq.com/m/api/open/index.html)
-[![官方GitBook文档/Official GitBook Documentation]](https://xingqiao.gitbooks.io/qmplayer/content/)
-[![官方Demo/Official Demo]](http://y.qq.com/m/demo/2017/player.html)
+
+
+[官方API说明/Official API Description](https://y.qq.com/m/api/open/index.html)
+
+[官方GitBook文档/Official GitBook Documentation](https://xingqiao.gitbooks.io/qmplayer/content/)
+
+[官方Demo/Official Demo](http://y.qq.com/m/demo/2017/player.html)
+
 
 
 ## 关于以后的事情/About The Things In The Future
