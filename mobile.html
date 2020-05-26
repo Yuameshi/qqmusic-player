@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <META HTTP-EQUIV="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <META charset="utf-8">
+    <META name="author" content="我爱C艹">
+    <META name="generator" content="我爱C艹">
+    <META name="copyright" content="Copyrights (C) 2020 我爱C艹 All Rights Reserved">
+    <title id="title">Despair · QQ音乐播放器</title>
+    <link rel="stylesheet" type="text/css" href="mobile.css" />
+    <link rel="icon" href="/img/icon.ico" />
+</head>
+
+<body>
+    <script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>
+    <script type="text/javascript" src="api.js"></script>
+    <div class="ad">
+        <img src="logo.png">
+        <a href="https://github.com/i-am-a-loser-using-windows-server/qqmusic-player" target="__blank"><br><big>GitHub</big></a>
+    </div>
+    <div class="main">
+
+        <input id="iptbox" type="text" name="w" placeholder=" 曲目名/曲目ID（注意：以下敏感关键字: “ “f” ”，“ “fiurl” ”搜索可能会Bug！）"
+            required autocomplete="off">
+        <button style="left:62%" onclick="throughname()">曲目名播放</button>
+        <button style="left:85%" onclick="throughid()">ID播放</button>
+    </div>
+
+    <div id="infocontain" class="infocontain">
+        <img class="aubum" id="album" src="T002R300x300M000003rycDS0ktpT2_1.jpg">
+        <p id="songname">Despair</p>
+        <p id="singer">LookedatHerFore</p>
+        
+
+
+        <button id="playpause" onclick="playorpause()">►</button>
+        <!--<button id="searchprogress" onclick="fetchprogress()">查询进度</button>
+        -->
+        <div id="progressbar" onclick="changeprogress()">
+            <div id="progressinner" onclick="changeprogress()"></div>
+            <span id="time">0:00/0:00</span>
+        </div>
+    </div>
+    <div class="copyrights">
+        2020 Copyrights © 我爱C艹 - <span>All Rights Reserved</span><br><a href="http://ilovecpp.pw/index.html" target="__blank"
+            title="主站">欢迎来访主站</a>
+        <a href="https://github.com/i-am-a-loser-using-windows-server/qqmusic-player" target="__blank">GitHub页面</a>
+        <br>
+        本作品希望采用<a rel="license" target="__blank"
+            href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>与<a
+            target="__blank" href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0协议</a>共同进行许可。<br>
+    </div>
+</body>
+
+</html>

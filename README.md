@@ -7,6 +7,7 @@
 ## 关于/About
 
 这是一个自己写的，使用QQ音乐官方API
+It's Wrote By My Self , Using Official API Of QQMusic
 
 
 [官方API说明/Official API Description](https://y.qq.com/m/api/open/index.html)
@@ -15,13 +16,14 @@
 
 [官方Demo/Official Demo](http://y.qq.com/m/demo/2017/player.html)
 
+[自制Demo/Self Made Demo](http://39.101.194.181/proj/qqmusic/)
 
 
 ## 关于以后的事情/About The Things In The Future
 
 歌名全自动这个就免了，网上能找到的JavaScript跨域方法都给用了一遍结果还是CORD，除了Proxy不太会，没搞（毕竟只是一个初中生）
 
-The song name is fully automatic. This can be avoided. The JavaScript cross-domain methods that can be found on the Internet are all used again. The result is still CORD. Except for Proxy, it is not very good.
+The song name is fully automatic. This can be avoided. The JavaScript cross-domain methods that can be found on the Internet are all used again. The result is still CORS Failure. Except for Proxy, it is not very good.
 
 如果有比较好的方法的话issue我就好了，我比较喜欢ASP.VB（ASP.NET没学过），PhP的话也可以接受，本人不会用而已。
 
