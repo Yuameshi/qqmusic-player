@@ -1,12 +1,12 @@
 print("网易云就是废物好吧！");
 var api = document.getElementById("iframe");
 var player = new QMplayer();
-player.play("000WKvUf0GuCyl");
-print("Initial Song Loaded！")
-print("Player State:" + player.state);
-msprev("Despair","LookedatHerFore","","http://39.101.194.181/proj/qqmusic/T002R300x300M000003rycDS0ktpT2_1.jpg");
 
 window.onload=function(){
+  qmjsonstr("{\"code\":0,\"data\":{\"album\":{\"curnum\":0,\"curpage\":1,\"list\":[],\"totalnum\":0},\"keyword\":\"\",\"mv\":{\"curnum\":0,\"curpage\":1,\"list\":[],\"totalnum\":0},\"priority\":0,\"qc\":[],\"sematic\":{\"curnum\":0,\"curpage\":1,\"list\":[],\"totalnum\":0},\"song\":{\"curnum\":0,\"curpage\":1,\"list\":[{\"albumName_hilight\":\"Limitless（无限）\",\"chinesesinger\":0,\"docid\":\"6204472722485776543\",\"f\":\"254134182|Limitless（无限）|5202149|SeVen.13|10638980|Limitless（无限）|0|238|0|1|0|9529713|3812031|0|0|0|0|5360972|5682914|0|002liAge1MX1l5|003dESR30ILHU7|000ODU4b3jj6cv|0|4009\",\"fiurl\":\"\",\"fnote\":2009,\"fsinger\":\"SeVen.13\",\"fsinger2\":\"\",\"fsong\":\"Limitless（无限）\",\"grp\":[],\"isupload\":0,\"isweiyun\":0,\"lyric\":\"\",\"lyric_hilight\":\"\",\"mv\":\"q00336z1zgn\",\"nt\":428275951,\"only\":1,\"pubTime\":1582042624,\"pure\":0,\"singerMID\":\"003dESR30ILHU7\",\"singerMID2\":\"\",\"singerName2_hilight\":\"\",\"singerName_hilight\":\"SeVen.13\",\"singerid\":5202149,\"singerid2\":0,\"songName_hilight\":\"Limitless（无限）\",\"t\":1,\"tag\":10,\"ver\":0}],\"totalnum\":0},\"totaltime\":0.0,\"zhida\":{\"chinesesinger\":0,\"type\":0}},\"message\":\"no results\",\"notice\":\"\",\"subcode\":10003,\"time\":1590659413,\"tips\":\"\"}");
+  player.play();
+  print("Initial Song Loaded！")
+  print("Player State:" + player.state);
   print("Started Auto Fetching Progress/Player State...");
   var stat = player.state;
   var album = document.getElementById("album");
@@ -21,7 +21,7 @@ window.onload=function(){
       playpause.innerHTML = "►";
       album.className = "empty";
     }
-  },100);
+  },1000);
 }
 
 function msprev(songname,singer,album,image) {
@@ -76,6 +76,7 @@ function throughid() {
     album.src = "throughid.jpg";
     var songmid = document.getElementById("songmid");
     songmid.innerHTML = "曲目ID：" + ipt;
+  songmid.href = "https://y.qq.com/n/yqq/song/" + ipt;
   	var time = document.getElementById("time");
     time.innerHTML = "0s/" + player.duration + "s";
 }
@@ -145,7 +146,7 @@ function qmjsonraw(res) {
 
 function qmjsonstr(res) {
   if (!res) {
-    var res = prompt();
+    var res = prompt("请输入JSON数据","");
   }
   var temp;
   var songname = res.slice(res.indexOf("fsong") + 8, res.indexOf("grp") - 3);
@@ -173,6 +174,7 @@ function qmjsonstr(res) {
   songname_element.innerHTML = songname;
   singer_element.innerHTML = singer;
   songid_element.innerHTML = '曲目ID：' + songmid;
+  songid_element.href = "https://y.qq.com/n/yqq/song/" + songmid;
   title_element.innerHTML = songname + ' · QQ音乐播放器';
   album_element.src = 'http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_' + albumid + '_0.jpg';
   album_element.innerHTML = album;
