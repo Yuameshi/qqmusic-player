@@ -19,7 +19,7 @@ It's Wrote By My Self , Using Official API Of QQMusic
 [自制Demo/Self Made Demo](http://39.101.194.181/proj/qqmusic/)
 
 
-##用法/Usage
+## 用法/Usage
 
 把文件都复制到你的服务器，并将68行的第四个参数替换成你服务器上throughid.jpg的路径，避免我到时候换服务器你就用不了了。
 
