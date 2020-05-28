@@ -76,9 +76,8 @@ function throughid() {
     album.src = "throughid.jpg";
     var songmid = document.getElementById("songmid");
     songmid.innerHTML = "曲目ID：" + ipt;
-  songmid.href = "https://y.qq.com/n/yqq/song/" + ipt;
-  	var time = document.getElementById("time");
-    time.innerHTML = "0s/" + player.duration + "s";
+    songmid.href = "https://y.qq.com/n/yqq/song/" + ipt+".html";
+    fetchprogress();
 }
 
 
@@ -136,6 +135,7 @@ function qmjsonraw(res) {
   songname_element.innerHTML = songname;
   singer_element.innerHTML = singer;
   songid_element.innerHTML = '曲目ID：' + songmid;
+  songid_element.href = "https://y.qq.com/n/yqq/song/" + songmid + ".html";
   title_element.innerHTML = songname + ' · QQ音乐播放器';
   album_element.src = 'http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_' + res.data.song.list["0"].albumid + '_0.jpg';
   player.play(songmid);
@@ -174,7 +174,7 @@ function qmjsonstr(res) {
   songname_element.innerHTML = songname;
   singer_element.innerHTML = singer;
   songid_element.innerHTML = '曲目ID：' + songmid;
-  songid_element.href = "https://y.qq.com/n/yqq/song/" + songmid;
+  songid_element.href = "https://y.qq.com/n/yqq/song/" + songmid +".html";
   title_element.innerHTML = songname + ' · QQ音乐播放器';
   album_element.src = 'http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_' + albumid + '_0.jpg';
   album_element.innerHTML = album;
