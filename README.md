@@ -19,6 +19,12 @@ It's Wrote By My Self , Using Official API Of QQMusic
 [自制Demo/Self Made Demo](http://39.101.194.181/proj/qqmusic/)
 
 
+##用法/Usage
+
+把文件都复制到你的服务器，并将68行的第四个参数替换成你服务器上throughid.jpg的路径，避免我到时候换服务器你就用不了了。
+
+Copy All Files To Your Server ,and replace the forth parameter to the path of "throughid.jpg" on your server, to prevent when I change the server then you cannot use this.
+
 ## 关于以后的事情/About The Things In The Future
 
 歌名全自动这个就免了，网上能找到的JavaScript跨域方法都给用了一遍结果还是CORD，除了Proxy不太会，没搞（毕竟只是一个初中生）
