@@ -65,18 +65,21 @@ function throughid() {
       alert('错误：无法获取曲目时长，可能没有该曲目！');
       return;
     }
-    msprev(ipt,"Unknown Artist","Unknown album","http://39.101.194.181/proj/qqmusic/throughid.jpg");
-    var songname = document.getElementById("songname");
-    songname.innerHTML = ipt;
-    var title = document.getElementById("title");
-    title.innerHTML = ipt + ' · QQ音乐播放器';
-  	var singer = document.getElementById("singer");
-  	singer.innerHTML = "未知艺术家";
-    var album = document.getElementById("album");
-    album.src = "throughid.jpg";
-    var songmid = document.getElementById("songmid");
-    songmid.innerHTML = "曲目ID：" + ipt;
-    songmid.href = "https://y.qq.com/n/yqq/song/" + ipt+".html";
+    var album_element = document.getElementById("album");
+    var title_element = document.getElementById("title");
+    var songname_element = document.getElementById("songname");
+    var songid_element = document.getElementById("songmid");
+    var singer_element = document.getElementById("singer");
+    var download_element = document.getElementById("download");
+    var albumid = player.data.song.album.id;  
+    var songname = player.data.song.name;
+    songid_element.innerHTML = "曲目ID：" + ipt;
+    songid_element.href = "https://y.qq.com/n/yqq/song/" + ipt+".html";
+    msprev(songname, "未知艺术家", player.data.song.album.name, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
+    songname_element.innerHTML = songname;
+    title_element.innerHTML = songname + ' · QQ音乐播放器';
+  	singer_element.innerHTML = "未知艺术家";
+    album_element.src = "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg";
     fetchprogress();
 }
 
