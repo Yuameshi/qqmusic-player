@@ -1,5 +1,4 @@
 print("网易云就是废物好吧！");
-var api = document.getElementById("iframe");
 var player = new QMplayer();
 
 window.onload=function(){
@@ -58,13 +57,16 @@ function throughid() {
       return;
     }
     print("Input Box Value：" + ipt);
+    var Temp = player.data.song.mid;
     player.play(ipt);
     print('Duration:' + player.duration);
-    if(player.duration == "NaN") {
+    setTimeout(function(){
+    if(isNaN(player.duration)) {
       print("Error:Cannot Fetch Duration，Maybe Song Not Found!");
       alert('错误：无法获取曲目时长，可能没有该曲目！');
+      player.play(Temp)
       return;
-    }
+    }},100);
     print("Getting Player Data...");
     var album_element = document.getElementById("album");
     var title_element = document.getElementById("title");
@@ -83,7 +85,7 @@ function throughid() {
     title_element.innerHTML = songname + ' · QQ音乐播放器';
   	singer_element.innerHTML = player.data.song.singer[0].name;
     album_element.src = "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg";
-    fetchprogress();
+    download_element.href = player.data.song.url;
 }
 
 
@@ -103,6 +105,7 @@ function throughname() {
     var script=document.createElement("script")
     script.src="proxy.php?w=" + ipt;
     document.body.appendChild(script);
+    setTimeout("document.body.appendChild(script)",10000)
 }
 
 function callback(res) {
@@ -135,6 +138,7 @@ function callback(res) {
   var songname_element = document.getElementById("songname");
   var songid_element = document.getElementById("songmid");
   var singer_element = document.getElementById("singer");
+  var download_element = document.getElementById("download");
   songname_element.innerHTML = songname;
   singer_element.innerHTML = singer;
   songid_element.innerHTML = '曲目ID：' + songmid;
@@ -143,6 +147,7 @@ function callback(res) {
   album_element.src = 'http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_' + albumid + '_0.jpg';
   album_element.alt = album;
   msprev(songname, singer, album, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
+  download_element.href = player.data.song.url;
   },500)
 }
 
