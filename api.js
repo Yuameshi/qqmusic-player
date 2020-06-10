@@ -1,5 +1,6 @@
 print("网易云就是废物好吧！");
 var player = new QMplayer();
+player.play("002liAge1MX1l5");
 
 window.onload=function(){
   callback({"code":0,"data":{"album":{"curnum":0,"curpage":1,"list":[],"totalnum":0},"keyword":"","mv":{"curnum":0,"curpage":1,"list":[],"totalnum":0},"priority":0,"qc":[],"sematic":{"curnum":0,"curpage":1,"list":[],"totalnum":0},"song":{"curnum":0,"curpage":1,"list":[{"albumName_hilight":"Limitless（无限）","chinesesinger":0,"docid":"6204472722485776543","f":"254134182|Limitless（无限）|5202149|SeVen.13|10638980|Limitless（无限）|0|238|0|1|0|9529713|3812031|0|0|0|0|5360972|5682914|0|002liAge1MX1l5|003dESR30ILHU7|000ODU4b3jj6cv|0|4009","fiurl":"","fnote":2009,"fsinger":"SeVen.13","fsinger2":"","fsong":"Limitless（无限）","grp":[],"isupload":0,"isweiyun":0,"lyric":"","lyric_hilight":"","mv":"q00336z1zgn","nt":428275951,"only":1,"pubTime":1582042624,"pure":0,"singerMID":"003dESR30ILHU7","singerMID2":"","singerName2_hilight":"","singerName_hilight":"SeVen.13","singerid":5202149,"singerid2":0,"songName_hilight":"Limitless（无限）","t":1,"tag":10,"ver":0}],"totalnum":0},"totaltime":0.0,"zhida":{"chinesesinger":0,"type":0}},"message":"no results","notice":"","subcode":10003,"time":1591690814,"tips":""})
@@ -118,9 +119,16 @@ function callback(res) {
   print("Parsed Core Data:"+coredata);
   var songmid = coredata.slice(coredata.indexOf("|00")+1,coredata.indexOf("|00")+15);
   print("Parsed Song ID:"+songmid);
+  var Temp = player.data.song.mid;
   player.play(songmid);
   print("Trying To Start To Play");
   setTimeout(function () {
+  if(player.data.song.pay.pay_play==1){
+    print("Error：Value Of Pay2Play Is TRUE!");
+    alert("错误：该歌曲为付费播放歌曲！");
+    player.play(Temp);
+    return;
+  }
   print("Getting Player Data=>Song Name...");
   var songname = player.data.song.name;
   print("Getted Song Data=>Song Name:" + songname);
