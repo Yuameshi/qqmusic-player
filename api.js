@@ -105,7 +105,7 @@ function throughname() {
     var script=document.createElement("script")
     script.src="proxy.php?w=" + ipt;
     document.body.appendChild(script);
-    setTimeout("document.body.appendChild(script)",10000)
+    setTimeout("document.body.removeChild(script)",10000)
 }
 
 function callback(res) {
