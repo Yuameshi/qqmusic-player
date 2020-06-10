@@ -39,79 +39,88 @@ function msprev(songname,singer,album,image) {
 
 }
 
-
-//高级的Console输出
 function print(text) {
-        console.log("%c QQ Music Player API：%c" + text,"border-top-left-radius:5px;border-bottom-left-radius: 5px;margin:0;padding:0;font-size:20px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(255,220,0);color:rgb(20,188,114);","font-size:20px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(17,190,115);color:rgb(255,220,0);margin:5px;margin-left:0;border-top-right-radius:5px;border-bottom-right-radius:5px;");
+  console.log("%c QQ Music Player API：%c" + text,"border-top-left-radius:5px;border-bottom-left-radius: 5px;margin:0;padding:0;font-size:20px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(255,220,0);color:rgb(20,188,114);","font-size:20px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(17,190,115);color:rgb(255,220,0);margin:5px;margin-left:0;border-top-right-radius:5px;border-bottom-right-radius:5px;");
 }
 
-
-//通过ID
 function throughid() {
 	print("Start Running Process：throughid()");
+  if(!ipt){
+    print("Info: No Initial Value! Getting Data From Input Box...");
     var iptbox = document.getElementById("iptbox");
     var ipt = iptbox.value;
-    iptbox.value = "";
-    if (!ipt) {
-      print('Error：Empty String！');
-      alert('曲目ID不能为空！');
-      return;
-    }
     print("Input Box Value：" + ipt);
-    var Temp = player.data.song.mid;
-    player.play(ipt);
-    print('Duration:' + player.duration);
-    setTimeout(function(){
-    if(isNaN(player.duration)) {
-      print("Error:Cannot Fetch Duration，Maybe Song Not Found!");
-      alert('错误：无法获取曲目时长，可能没有该曲目！');
-      player.play(Temp)
-      return;
-    }},100);
-    print("Getting Player Data...");
-    var album_element = document.getElementById("album");
-    var title_element = document.getElementById("title");
-    var songname_element = document.getElementById("songname");
-    var songid_element = document.getElementById("songmid");
-    var singer_element = document.getElementById("singer");
-    var download_element = document.getElementById("download");
-    var songname = player.data.song.name;
-    print("Getted Song Name:"+songname);
-    var albumid = player.data.song.album.id; 
-    print("Getted Aubum ID:"+albumid); 
-    songid_element.innerHTML = "曲目ID：" + ipt;
-    songid_element.href = "https://y.qq.com/n/yqq/song/" + ipt+".html";
-    msprev(songname, player.data.song.singer[0].name, player.data.song.album.name, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
-    songname_element.innerHTML = songname;
-    title_element.innerHTML = songname + ' · QQ音乐播放器';
-  	singer_element.innerHTML = player.data.song.singer[0].name;
-    album_element.src = "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg";
-    download_element.href = player.data.song.url;
+    iptbox.value = "";
+  }
+  var iptbox = document.getElementById("iptbox");
+  var ipt = iptbox.value;
+  iptbox.value = "";
+  if (!ipt) {
+    print('Error：Empty String！');
+    alert('曲目ID不能为空！');
+    return;
+  }
+  print("Input Box Value：" + ipt);
+  var Temp = player.data.song.mid;
+  player.play(ipt);
+  print('Duration:' + player.duration);
+  setTimeout(function(){
+  if(isNaN(player.duration)) {
+    print("Error:Cannot Fetch Duration，Maybe Song Not Found!");
+    alert('错误：无法获取曲目时长，可能没有该曲目！');
+    player.play(Temp)
+    return;
+  }},100);
+  print("Getting Player Data...");
+  var album_element = document.getElementById("album");
+  var title_element = document.getElementById("title");
+  var songname_element = document.getElementById("songname");
+  var songid_element = document.getElementById("songmid");
+  var singer_element = document.getElementById("singer");
+  var download_element = document.getElementById("download");
+  var songname = player.data.song.name;
+  print("Getted Song Name:"+songname);
+  var albumid = player.data.song.album.id; 
+  print("Getted Aubum ID:"+albumid); 
+  songid_element.innerHTML = "曲目ID：" + ipt;
+  songid_element.href = "https://y.qq.com/n/yqq/song/" + ipt+".html";
+  msprev(songname, player.data.song.singer[0].name, player.data.song.album.name, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
+  songname_element.innerHTML = songname;
+  title_element.innerHTML = songname + ' · QQ音乐播放器';
+  singer_element.innerHTML = player.data.song.singer[0].name;
+  album_element.src = "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg";
+  download_element.href = player.data.song.url;
 }
 
-
-//通过歌名
-function throughname() {
-	  print("Start Running Process：throughname()");
-	  var iptbox = document.getElementById("iptbox");
-    var album = 'http://imgcache.qq.com/music/photo/album_200/20/200_albumpic_140820_0.jpg'
+function throughname(ipt) {
+	print("Info:Process Started Running!");
+  if(!ipt){
+    print("Info: No Initial Value! Getting Data From Input Box...");
+    var iptbox = document.getElementById("iptbox");
     var ipt = iptbox.value;
     print("Input Box Value：" + ipt);
     iptbox.value = "";
-    if (!ipt) {
-      print('Error：Empty String！');
-      alert('曲目名不能为空！');
-      return;
-    }
-    var script=document.createElement("script")
-    script.src="proxy.php?w=" + ipt;
-    document.body.appendChild(script);
-    setTimeout("document.body.removeChild(script)",10000)
+  }
+  if (!ipt) {
+    print('Error：Empty String！');
+    alert('曲目名不能为空！');
+    return;
+  }
+  var script=document.createElement("script")
+  script.src="proxy.php?w=" + ipt;
+  document.body.appendChild(script);
+  setTimeout("document.body.removeChild(script)",10000)
 }
 
 function callback(res) {
   if (!res) {
+    alert("错误：无法收到返回值！")
     print("Error:Cannot Get Callback Data!");
+    return;
+  }
+  if(res.subcode==-10002){
+    alert("错误：无法找到曲目！");
+    print("Error:Song Cannot Be Found!");
     return;
   }
   print("JSON Data Parsing...");
@@ -159,18 +168,17 @@ function callback(res) {
   },500)
 }
 
-//播放函数
 function playorpause() {
 	print("Try To Start Play");
 	player.play();
-  	var playpause = document.getElementById("playpause");
-  	var state = player.state;
-  	print("Status：" + state);
-  	if (state=="playing") {
-  		playpause.innerHTML = "||";
-  	} else {
-  		playpause.innerHTML = "►";
-  	}
+  var playpause = document.getElementById("playpause");
+  var state = player.state;
+  print("Status：" + state);
+  if (state=="playing") {
+  	playpause.innerHTML = "||";
+  } else {
+  	playpause.innerHTML = "►";
+  }
 
 }
 
@@ -200,7 +208,6 @@ function fetchprogress() {
   progress.style.width =  wid * 100 + "%";
 }
 
-//懒得改布局了
 function autofetchprogress() {
   var progress = document.getElementById("progressinner");
   var timecount = document.getElementById("time");
@@ -212,7 +219,6 @@ function autofetchprogress() {
   var wrtcurr_min = Math.floor(current / 60);
   var wrtcurr_sec = Math.round(current % 60);
   var wid = current / duration;
-  //写进页面
   if(Math.floor(wrtcurr_sec / 10) == ""){
     var wrt = wrtcurr_min + ':0' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
   } else {
@@ -223,43 +229,40 @@ function autofetchprogress() {
   progress.style.width =  wid * 100 + "%";
 }
 
-
 function changeprogress(ev) {
-    ev = ev || window.event;
-    var progress = document.getElementById("progressbar");
-    var progressinner = document.getElementById("progressinner");
-    var outside_offsetL = document.getElementById("infocontain").offsetLeft;
-    var total_offsetL = outside_offsetL + progress.offsetLeft;
-    print("Total Offset=>Left:" + total_offsetL);
-    var MousePosX = getMouseCoords(ev).x;
-    print("Mouse Position=>X:" + MousePosX);
-    print("Progress Bar=>Width:" + progress.offsetWidth);
-    var inner_width = ( MousePosX - total_offsetL) / progress.offsetWidth;
-    print("Progress=>Inner=>Width Will Be Changed:" + progressinner.offsetWidth / progress.offsetWidth + "%=>" + inner_width * 100 + "%");
-    progressinner.style.width =  inner_width * 100 + "%";
-    var target_time = player.duration * inner_width;
-    print("Time Will Be Changed:" + player.currentTime + "=>" + target_time);
-    player.currentTime = target_time;
-    var timecount = document.getElementById("time");
-    var dura_min = Math.floor(player.duration / 60);
-    var dura_sec = Math.round(player.duration % 60);
-    var curr_min = Math.floor(target_time / 60);
-    var curr_sec = Math.round(target_time % 60);
-    if(Math.floor(curr_sec / 10) == ""){
-      var wrt = curr_min + ':0' + curr_sec + '/' + dura_min + ':' + dura_sec;
-    } else {
-      var wrt = curr_min + ':' + curr_sec + '/' + dura_min + ':' + dura_sec;
-    }
-    timecount.innerHTML = wrt;
+  ev = ev || window.event;
+  var progress = document.getElementById("progressbar");
+  var progressinner = document.getElementById("progressinner");
+  var outside_offsetL = document.getElementById("infocontain").offsetLeft;
+  var total_offsetL = outside_offsetL + progress.offsetLeft;
+  print("Total Offset=>Left:" + total_offsetL);
+  var MousePosX = getMouseCoords(ev).x;
+  print("Mouse Position=>X:" + MousePosX);
+  print("Progress Bar=>Width:" + progress.offsetWidth);
+  var inner_width = ( MousePosX - total_offsetL) / progress.offsetWidth;
+  print("Progress=>Inner=>Width Will Be Changed:" + progressinner.offsetWidth / progress.offsetWidth + "%=>" + inner_width * 100 + "%");
+  progressinner.style.width =  inner_width * 100 + "%";
+  var target_time = player.duration * inner_width;
+  print("Time Will Be Changed:" + player.currentTime + "=>" + target_time);
+  player.currentTime = target_time;
+  var timecount = document.getElementById("time");
+  var dura_min = Math.floor(player.duration / 60);
+  var dura_sec = Math.round(player.duration % 60);
+  var curr_min = Math.floor(target_time / 60);
+  var curr_sec = Math.round(target_time % 60);
+  if(Math.floor(curr_sec / 10) == ""){
+    var wrt = curr_min + ':0' + curr_sec + '/' + dura_min + ':' + dura_sec;
+  } else {
+    var wrt = curr_min + ':' + curr_sec + '/' + dura_min + ':' + dura_sec;
+  }
+  timecount.innerHTML = wrt;
 }
-
-
 function getMouseCoords(ev) {
-    if (ev.pageX || ev.pageY) {
-        return {x: ev.pageX, y: ev.pageY};
-    }
-        return {
-        x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
-        y: ev.clientY + document.body.scrollTop - document.body.clientTop
-    };
+  if (ev.pageX || ev.pageY) {
+    return {x: ev.pageX, y: ev.pageY};
+  }
+    return {
+    x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+    y: ev.clientY + document.body.scrollTop - document.body.clientTop
+  };
 }
