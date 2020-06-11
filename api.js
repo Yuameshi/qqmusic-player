@@ -44,7 +44,6 @@ function print(text) {
 }
 
 function throughid() {
-	print("Start Running Process：throughid()");
   if(!ipt){
     print("Info: No Initial Value! Getting Data From Input Box...");
     var iptbox = document.getElementById("iptbox");
@@ -52,9 +51,6 @@ function throughid() {
     print("Input Box Value：" + ipt);
     iptbox.value = "";
   }
-  var iptbox = document.getElementById("iptbox");
-  var ipt = iptbox.value;
-  iptbox.value = "";
   if (!ipt) {
     print('Error：Empty String！');
     alert('曲目ID不能为空！');
@@ -69,6 +65,18 @@ function throughid() {
     print("Error:Cannot Fetch Duration，Maybe Song Not Found!");
     alert('错误：无法获取曲目时长，可能没有该曲目！');
     player.play(Temp)
+    return;
+  }
+  if(player.data.song.pay.pay_play==1){
+    print("Error：Value Of Pay2Play Is TRUE!");
+    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")为付费播放歌曲！");
+    player.play(Temp);
+    return;
+  }
+  if (player.data.song.url=="") {
+    print("Unexpected Error: Cannot Get Song URL!");
+    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")无法找到播放地址！可能QQ音乐没有该音乐的版权！");
+    player.play(Temp);
     return;
   }},100);
   print("Getting Player Data...");
@@ -93,7 +101,6 @@ function throughid() {
 }
 
 function throughname(ipt) {
-	print("Info:Process Started Running!");
   if(!ipt){
     print("Info: No Initial Value! Getting Data From Input Box...");
     var iptbox = document.getElementById("iptbox");
@@ -109,7 +116,7 @@ function throughname(ipt) {
   var script=document.createElement("script")
   script.src="proxy.php?w=" + ipt;
   document.body.appendChild(script);
-  setTimeout("document.body.removeChild(script)",10000)
+  setTimeout(function(){document.body.removeChild(script)},5000);
 }
 
 function callback(res) {
@@ -134,7 +141,13 @@ function callback(res) {
   setTimeout(function () {
   if(player.data.song.pay.pay_play==1){
     print("Error：Value Of Pay2Play Is TRUE!");
-    alert("错误：该歌曲为付费播放歌曲！");
+    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")为付费播放歌曲！");
+    player.play(Temp);
+    return;
+  }
+  if (player.data.song.url=="") {
+    print("Unexpected Error: Cannot Get Song URL!");
+    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")无法找到播放地址！可能QQ音乐没有该音乐的版权！");
     player.play(Temp);
     return;
   }
