@@ -62,19 +62,19 @@ input:hover{
     transition: all .2s ease-in-out;
 }
 
-div.main>input{
+form>input{
     position: absolute;
     top: 5%;
-    width: 60%;
+    width: 85%;
     height: 80%;
-    font-size: 24px;
-    border-radius: 999px;
+    font-size: 48px;
+    border-radius: 30px;
     padding-left: 5px;
     border: rgb(20,80,126) 1px solid;
     transition: all .3s ease-in-out;
 }
 
-div.main>button{
+form>button{
     position: absolute;
     top: 5%;
     height: 80%;
