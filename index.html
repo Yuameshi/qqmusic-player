@@ -10,31 +10,31 @@
 	<META name="copyright" content="Copyrights (C) 2020 我爱C艹 All Rights Reserved">
 	<title id="title">QQ音乐播放器</title>
 	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
-	<link rel="icon" href="/img/icon.ico"/>
+	<link rel="icon" href="https://y.qq.com/favicon.ico"/>
 </head>
 
 <body>
 	<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>
 	<script type="text/javascript" src="api.js"></script>
 	<div class="main">
-
 	<img src="https://y.gtimg.cn/mediastyle/yqq/img/logo.png?nowebp=1">
-	<input id="iptbox" type="text" name="w" placeholder=" 曲目名/曲目ID" required autocomplete="off">
-	<button style="left:70%" onclick="throughname()">通过曲目名播放</button>
-	<button style="left:85%" onclick="throughid()">通过曲目ID播放</button>
+	<form>
+	<input id="iptbox" type="text" placeholder=" 曲目名" autofocus title="请填写曲目名" required autocomplete="off">
+	<button style="right: 1.5%" onclick="throughname()"><svg t="1591926638443" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1177" width="50" height="50"><path d="M830.486464 796.124515 672.790943 638.42797c44.959904-52.799318 72.109099-121.232412 72.109099-196.016087 0-167.084182-135.448007-302.533214-302.53219-302.533214s-302.533214 135.449031-302.533214 302.533214 135.449031 302.53219 302.533214 302.53219c74.782651 0 143.215745-27.149196 196.017111-72.109099L796.101988 830.531518c9.499249 9.499249 24.885227 9.499249 34.384476 0S839.986737 805.623764 830.486464 796.124515zM442.366829 698.401131c-141.380814 0-255.989248-114.631985-255.989248-255.989248 0-141.403341 114.608434-255.989248 255.989248-255.989248 141.37979 0 255.989248 114.585907 255.989248 255.989248C698.356077 583.769146 583.747643 698.401131 442.366829 698.401131z" p-id="1178"></path></svg></button>
+	</form>
 	</div>
 
 	<div id="infocontain" class="infocontain">
-		<img id="album" src="T002R300x300M000003rycDS0ktpT2_1.jpg">
+		<img id="album" alt="专辑图片" src="">
 		<p id="songname">曲目名</p>
 		<p id="singer">歌手</p>
 		<a href="https://y.qq.com" target="__blank" id="songmid">曲目ID：Unknown</a> 
-		<a href="" target="__blank" id="download">点击下载</a>
+		<a href="" target="__blank" download="Unknown" id="download">点击下载</a>
 		<span id="time">0:00/0:00</span>
 		
 			
 		<button id="playpause" onclick="playorpause()">►</button>
-		<button id="searchprogress" onclick="fetchprogress()">查询进度</button>
+		<button id="searchprogress" onclick="autofetchprogress()">查询进度</button>
 		
 		<div id="progressbar" onclick="changeprogress()">
 			<div id="progressinner" onclick="changeprogress()"></div>

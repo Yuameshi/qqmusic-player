@@ -1,3 +1,10 @@
+﻿/*
+按照许可条款，您(以下均指使用此仓库的人)可以自由的分发此仓库源代码，但根据CC：BY-NC-ND4.0，您不应将其用于商业用途，并且，您可能无法将继续分发已经进行过修改的副本，除非经过此仓库原作者承认，根据Apache License 2.0，我们保留对您进行起诉的权利。
+
+
+请注意：当您对源代码进行修改时，请注意好处理依赖关系。
+  **特别注意：此源代码全部依赖于QQ音乐官方API，若您将此JavaScript引用至其他页面，请添加<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>
+*/
 print("网易云就是废物好吧！");
 var player = new QMplayer();
 player.play("002liAge1MX1l5");
@@ -7,7 +14,7 @@ window.onload=function(){
   player.play();
   print("Initial Song Loaded！")
   print("Player State:" + player.state);
-  print("Started Auto Fetching Progress/Player State...");
+  print("Started Auto Fetching Progress...");
   var stat = player.state;
   var album = document.getElementById("album");
   album.className = "empty";
@@ -36,68 +43,73 @@ function msprev(songname,singer,album,image) {
       artwork: [{src: image, sizes: "300x300", type: "image/jpeg"}]
     });
   }
+}
 
+function apply2page(songmid) {
+  print("Getting Player Data=>Song Name...");
+  var songname = player.data.song.name;
+  print("Getted Song Data=>Song Name:" + songname);
+  print("Getting Player Data=>Singer");
+  var singer = player.data.song.singer["0"].name;
+  print("Getted Song Data=>Singer:" + singer);
+  print("Getting Player Data=>Aubum ID...");
+  var albumid = player.data.song.album.id;
+  print("Getted Song Data=>Aubum ID:" + albumid);
+  print("Getting Player Data=>Album Name...");
+  var album = player.data.song.album.name;
+  print("Getted Song Data=>Album Name:" + album);
+  msprev(songname, singer, album, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
+  var title_element = document.getElementById("title");
+  var songname_element = document.getElementById("songname");
+  var singer_element = document.getElementById("singer");
+  var album_element = document.getElementById("album");
+  var songid_element = document.getElementById("songmid");
+  var download_element = document.getElementById("download");
+  title_element.innerHTML = songname+" · QQ音乐播放器";
+  songname_element.innerHTML = songname;
+  singer_element.innerHTML = singer;
+  album_element.alt=album;
+  album_element.src="http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg";
+  songid_element.innerHTML = "曲目ID:"+songmid;
+  songid_element.href="https://y.qq.com/n/yqq/song/"+songmid+".html"
+  download_element.href=player.data.song.url;
+  download_element.download=songname+"-"+singer+"-Powered By QQMusic API";
 }
 
 function print(text) {
-  console.log("%c QQ Music Player API：%c" + text,"border-top-left-radius:5px;border-bottom-left-radius: 5px;margin:0;padding:0;font-size:20px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(255,220,0);color:rgb(20,188,114);","font-size:20px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(17,190,115);color:rgb(255,220,0);margin:5px;margin-left:0;border-top-right-radius:5px;border-bottom-right-radius:5px;");
+  console.log("%c QQ Music Player API: %c" + text,"border-top-left-radius:5px;border-bottom-left-radius: 5px;margin:0;padding:0;font-size:14px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(20,188,114);color:rgb(255,220,0);","font-size:14px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(255,220,0);color:rgb(17,190,115);margin:5px;margin-left:0;border-top-right-radius:5px;border-bottom-right-radius:5px;");
 }
 
-function throughid() {
-  if(!ipt){
-    print("Info: No Initial Value! Getting Data From Input Box...");
-    var iptbox = document.getElementById("iptbox");
-    var ipt = iptbox.value;
-    print("Input Box Value：" + ipt);
-    iptbox.value = "";
-  }
+function throughid(ipt) {
   if (!ipt) {
     print('Error：Empty String！');
     alert('曲目ID不能为空！');
     return;
   }
-  print("Input Box Value：" + ipt);
+  print("Input：" + ipt);
   var Temp = player.data.song.mid;
   player.play(ipt);
-  print('Duration:' + player.duration);
   setTimeout(function(){
   if(isNaN(player.duration)) {
     print("Error:Cannot Fetch Duration，Maybe Song Not Found!");
-    alert('错误：无法获取曲目时长，可能没有该曲目！');
-    player.play(Temp)
+    //alert('错误：无法获取曲目时长，可能没有该曲目！');
+    player.play(Temp);
     return;
   }
   if(player.data.song.pay.pay_play==1){
     print("Error：Value Of Pay2Play Is TRUE!");
-    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")为付费播放歌曲！");
+    //alert("错误：歌曲为付费播放歌曲！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
     player.play(Temp);
     return;
   }
   if (player.data.song.url=="") {
     print("Unexpected Error: Cannot Get Song URL!");
-    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")无法找到播放地址！可能QQ音乐没有该音乐的版权！");
+    //alert("错误：无法找到播放地址！可能QQ音乐没有该音乐的版权！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
     player.play(Temp);
     return;
-  }},100);
-  print("Getting Player Data...");
-  var album_element = document.getElementById("album");
-  var title_element = document.getElementById("title");
-  var songname_element = document.getElementById("songname");
-  var songid_element = document.getElementById("songmid");
-  var singer_element = document.getElementById("singer");
-  var download_element = document.getElementById("download");
-  var songname = player.data.song.name;
-  print("Getted Song Name:"+songname);
-  var albumid = player.data.song.album.id; 
-  print("Getted Aubum ID:"+albumid); 
-  songid_element.innerHTML = "曲目ID：" + ipt;
-  songid_element.href = "https://y.qq.com/n/yqq/song/" + ipt+".html";
-  msprev(songname, player.data.song.singer[0].name, player.data.song.album.name, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
-  songname_element.innerHTML = songname;
-  title_element.innerHTML = songname + ' · QQ音乐播放器';
-  singer_element.innerHTML = player.data.song.singer[0].name;
-  album_element.src = "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg";
-  download_element.href = player.data.song.url;
+  }
+  apply2page(ipt);
+  },100);
 }
 
 function throughname(ipt) {
@@ -136,49 +148,24 @@ function callback(res) {
   var songmid = coredata.slice(coredata.indexOf("|00")+1,coredata.indexOf("|00")+15);
   print("Parsed Song ID:"+songmid);
   var Temp = player.data.song.mid;
+  var TempDura=player.duration;
   player.play(songmid);
   print("Trying To Start To Play");
   setTimeout(function () {
   if(player.data.song.pay.pay_play==1){
     print("Error：Value Of Pay2Play Is TRUE!");
-    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")为付费播放歌曲！");
+    alert("错误：歌曲为付费播放歌曲！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
     player.play(Temp);
     return;
   }
   if (player.data.song.url=="") {
     print("Unexpected Error: Cannot Get Song URL!");
-    alert("错误：歌曲:\""+player.data.song.name+"\"(演唱者:"+player.data.song.singer["0"].name+")无法找到播放地址！可能QQ音乐没有该音乐的版权！");
+    alert("错误：歌曲无法找到播放地址！可能QQ音乐没有该音乐的版权！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
     player.play(Temp);
     return;
   }
-  print("Getting Player Data=>Song Name...");
-  var songname = player.data.song.name;
-  print("Getted Song Data=>Song Name:" + songname);
-  print("Getting Player Data=>Singer");
-  var singer = player.data.song.singer["0"].name;
-  print("Getted Song Data=>Singer:" + singer);
-  print("Getting Player Data=>Aubum ID...");
-  var albumid = player.data.song.album.id;
-  print("Getted Song Data=>Aubum ID:" + albumid);
-  print("Getting Player Data=>Album Name...");
-  var album = player.data.song.album.name;
-  print("Getted Song Data=>Album Name:" + album);
-  var album_element = document.getElementById("album");
-  var title_element = document.getElementById("title");
-  var songname_element = document.getElementById("songname");
-  var songid_element = document.getElementById("songmid");
-  var singer_element = document.getElementById("singer");
-  var download_element = document.getElementById("download");
-  songname_element.innerHTML = songname;
-  singer_element.innerHTML = singer;
-  songid_element.innerHTML = '曲目ID：' + songmid;
-  songid_element.href = "https://y.qq.com/n/yqq/song/" + songmid + ".html";
-  title_element.innerHTML = songname + ' · QQ音乐播放器';
-  album_element.src = 'http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_' + albumid + '_0.jpg';
-  album_element.alt = album;
-  msprev(songname, singer, album, "http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" + albumid + "_0.jpg");
-  download_element.href = player.data.song.url;
-  },500)
+  apply2page(songmid);
+  },100);
 }
 
 function playorpause() {
@@ -195,32 +182,6 @@ function playorpause() {
 
 }
 
-function fetchprogress() {
-  var progress = document.getElementById("progressinner");
-  var timecount = document.getElementById("time");
-  print("Fetching Progress...");
-  var state = player.state;
-  var duration = player.duration;
-  print("Duration：" + duration);
-  var current = player.currentTime;
-  print("Current Time：" + current);
-  var wrtdura_min = Math.floor(duration / 60);
-  var wrtdura_sec = Math.round(duration % 60);
-  var wrtcurr_min = Math.floor(current / 60);
-  var wrtcurr_sec = Math.round(current % 60);
-  var wid = current / duration;
-  //写进页面
-  if(Math.floor(wrtcurr_sec / 10) == ""){
-    var wrt = wrtcurr_min + ':0' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
-  } else {
-    var wrt = wrtcurr_min + ':' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
-
-  }
-  timecount.innerHTML = wrt;
-  timecount.style.color = "#000";
-  progress.style.width =  wid * 100 + "%";
-}
-
 function autofetchprogress() {
   var progress = document.getElementById("progressinner");
   var timecount = document.getElementById("time");
@@ -233,10 +194,12 @@ function autofetchprogress() {
   var wrtcurr_sec = Math.round(current % 60);
   var wid = current / duration;
   if(Math.floor(wrtcurr_sec / 10) == ""){
-    var wrt = wrtcurr_min + ':0' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
-  } else {
-    var wrt = wrtcurr_min + ':' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
+    wrtcurr_sec = "0"+wrtcurr_sec;
   }
+  if(Math.floor(wrtdura_sec / 10) == ""){
+    wrtdura_sec = "0"+wrtdura_sec;
+  }
+  var wrt = wrtcurr_min + ':' + wrtcurr_sec + '/' + wrtdura_min + ':' +wrtdura_sec;
   timecount.innerHTML = wrt;
   timecount.style.color = "#000";
   progress.style.width =  wid * 100 + "%";
@@ -249,7 +212,7 @@ function changeprogress(ev) {
   var outside_offsetL = document.getElementById("infocontain").offsetLeft;
   var total_offsetL = outside_offsetL + progress.offsetLeft;
   print("Total Offset=>Left:" + total_offsetL);
-  var MousePosX = getMouseCoords(ev).x;
+  var MousePosX = getMousePos(ev).x;
   print("Mouse Position=>X:" + MousePosX);
   print("Progress Bar=>Width:" + progress.offsetWidth);
   var inner_width = ( MousePosX - total_offsetL) / progress.offsetWidth;
@@ -263,14 +226,16 @@ function changeprogress(ev) {
   var dura_sec = Math.round(player.duration % 60);
   var curr_min = Math.floor(target_time / 60);
   var curr_sec = Math.round(target_time % 60);
-  if(Math.floor(curr_sec / 10) == ""){
-    var wrt = curr_min + ':0' + curr_sec + '/' + dura_min + ':' + dura_sec;
-  } else {
-    var wrt = curr_min + ':' + curr_sec + '/' + dura_min + ':' + dura_sec;
+  if(Math.floor(wrtcurr_sec / 10) == ""){
+    wrtcurr_sec = "0"+wrtcurr_sec;
   }
+  if(Math.floor(wrtdura_sec / 10) == ""){
+    wrtdura_sec = "0"+wrtdura_sec;
+  }
+    var wrt = curr_min + ':' + curr_sec + '/' + dura_min + ':' + dura_sec;
   timecount.innerHTML = wrt;
 }
-function getMouseCoords(ev) {
+function getMousePos(ev) {
   if (ev.pageX || ev.pageY) {
     return {x: ev.pageX, y: ev.pageY};
   }
