@@ -55,8 +55,9 @@ Please note: When you modify the source code, please pay attention to handling d
     <script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>
 ## 关于以后的事情/About The Things In The Future
 
-我会努力开发使用Classic ASP的跨域代理的！
-I'll do my best to develop Cross-Orgin Proxy By Using Classic ASP!
+emmm，我也想不到。
+
+hmmm, I can't think about it too.
 
 
 ## English Parts Are Translated By Google.
