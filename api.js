@@ -125,8 +125,8 @@ function throughname(ipt) {
     alert('曲目名不能为空！');
     return;
   }
-  var script=document.createElement("script")
-  script.src="proxy.php?w=" + ipt;
+  var script=document.createElement("script");
+  script.src="http://c.y.qq.com/soso/fcgi-bin/music_search_new_platform?searchid=53806572956004615&t=1&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=1&n=1&w="+ipt;
   document.body.appendChild(script);
   setTimeout(function(){document.body.removeChild(script)},5000);
 }
