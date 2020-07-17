@@ -104,12 +104,12 @@ function throughid(ipt) {
   }
   if (player.data.song.url=="") {
     print("Unexpected Error: Cannot Get Song URL!");
-    //alert("错误：无法找到播放地址！可能QQ音乐没有该音乐的版权！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
+    //alert("意料之外的错误：无法找到播放地址！可能QQ音乐没有该音乐的版权！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
     player.play(Temp);
     return;
   }
   apply2page(ipt);
-  },100);
+  },500);
 }
 
 function throughname(ipt) {
@@ -160,12 +160,12 @@ function callback(res) {
   }
   if (player.data.song.url=="") {
     print("Unexpected Error: Cannot Get Song URL!");
-    alert("错误：歌曲无法找到播放地址！可能QQ音乐没有该音乐的版权！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
+    alert("意料之外的错误：歌曲无法找到播放地址！可能QQ音乐没有该音乐的版权！\n详细信息：\n曲目名："+player.data.song.name+"\n演唱者："+player.data.song.singer["0"].name+"\n专辑："+player.data.song.album.name);
     player.play(Temp);
     return;
   }
   apply2page(songmid);
-  },100);
+  },500);
 }
 
 function playorpause() {
