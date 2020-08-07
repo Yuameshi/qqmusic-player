@@ -9,19 +9,19 @@
 
 ### 我们还希望一些条款，包括但不限于：
 
-  请在对源代码作出修改后Fork本仓库，并在修改后的文档显眼处(例如在HTML处注释)，声明您对此储存库做出了什么修改，修改了什么；
+  1.请在对源代码作出修改后Fork本仓库，并在修改后的文档显眼处(例如在HTML处注释)，声明您对此储存库做出了什么修改，修改了什么；
   
-  不要将此储存库用于商业用途；
+  2.不要将此储存库用于商业用途；
   
-  当他人使用您修改后的代码部分后出现纠纷，我们没有义务为您背书。
+  3.当他人使用您修改后的代码部分后出现纠纷，我们没有义务为您背书。
   
-### We also hope to add some license terms, including these but not limited to others
+### We also hope to add some other license terms, including these but not limited to others
 
-  After modified code please "Fork" this repository, and declare what changes you have made to this repository  and what has been modified at the conspicuous place of the after-modified document (such as comments in HTML);
+  1.After modified code please "Fork" this repository, and declare what changes you have made to this repository  and what has been modified at the conspicuous place of the after-modified document (such as comments in HTML);
   
-  Do not use this repository for commercial purposes;
+  2.Do not use this repository for commercial purposes;
   
-  When a dispute arises after someone else uses your modified part of the code, we have no obligation to take the responsibility for you.
+  3.When a dispute arises after someone else uses your modified part of the code, we have no obligation to take the responsibility for you.
   
 ## 关于/About
 
