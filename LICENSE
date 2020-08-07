@@ -3,16 +3,15 @@
 此储存库(或者称为项目)将按照"知识共享 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)" 的授权方式释出,此许可条款的中文-简体版本您将能在下方"附件1"处找到，这既在法律层面有效的保证您大可不必担心转载和转写带来的版权争议，也禁止了藉此牟利的情况出现。
 CC BY-NC-SA 4.0中文版本：https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh
 English Version Of CC BY-NC-SA 4.0：https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
-我们还希望添加如下条款：
+我们还希望添加如下条款，包括但不限于：
   对源代码作出修改并发布后Fork本仓库，并在修改后的文档显眼处(例如在HTML开始处注释)，声明您对此储存库做出了什么修改，修改了什么；
   不要将此储存库用于商业用途；
   当他人使用您修改后的代码部分后出现纠纷，我们没有义务为您背书。
   
-We also hope to add the following clauses:
-  After the source code is modified and released, the Fork repository, and in the conspicuous place of the modified document (For example, comment at the beginning of HTML, declare what changes you have made to this repository and what has been modified;
-  Do not use this repository for commercial purposes;
-  When a dispute arises after someone else uses your modified part of the code, we have no obligation to take the responsibility for you.
-  
+We also hope to add some other license terms, including these but not limited to others:
+  1.After modified code please "Fork" this repository, and declare what changes you have made to this repository  and what has been modified at the conspicuous place of the after modified document (such as comments in HTML);
+  2.Do not use this repository for commercial purposes;
+  3.When a dispute arises after someone else uses your modified part of the code, we have no obligation to take the responsibility for you.
 =======================================================
 附件1：
 请注意，本文档摘自"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"，旨在让您能够方便地查看协议内容，但我们仍然建议您前往源网页查看这份协议
