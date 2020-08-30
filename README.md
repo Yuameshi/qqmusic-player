@@ -3,7 +3,7 @@
 ## 源代码许可条款
 本储存库遵循"署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)",此许可条款您将能在下方"附件1"处找到。
 
-[CC BY-NC-SA 4.0中文版本](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 此文件您也可以参阅[LICENCE](https://github.com/i-am-a-loser-using-windows-server/qqmusic-player/blob/master/LICENSE)
+[CC BY-NC-SA 4.0中文版本](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 此文件您也可以参阅[LICENSE](https://github.com/i-am-a-loser-using-windows-server/qqmusic-player/blob/master/LICENSE)
 
 [English Version Of CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
 
