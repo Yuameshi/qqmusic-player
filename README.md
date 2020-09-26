@@ -40,9 +40,9 @@ It's Wrote By My Self , Using Official API Of QQMusic
 
 ## 用法/Usage
 
-把文件都复制到你的服务器，然后访问"index.html"(桌面/iPad横向适配较好)或者"mobile.html"(手机/iPad纵向适配较好)即可访问。
+把文件都复制到你的服务器，然后访问"index.html"(现已添加Responsive)即可。
 
-Copy All Files To Your Server , and visit "index.html"(better for computer and iPad holding at horizontally) or "mobile.html"(better for mobiles and iPad holding at vertically).
+Copy All Files To Your Server , and visit "index.html"(Responsive is Added Now).
 
 请注意：当您对源代码进行修改时，请注意好处理依赖关系。
 
@@ -52,7 +52,7 @@ Copy All Files To Your Server , and visit "index.html"(better for computer and i
 Special Note: When you're editting the source code, please pay attention to handling dependencies. 
 
   **Special note: This source code depends on the official QQ music API, if you refer this JavaScript to other pages, please add this JavaScript:
-    **<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>**
+    `<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>`
 ## 关于以后的事情/About The Things In The Future
 
 emmm，我也想不到。
