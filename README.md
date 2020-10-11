@@ -46,12 +46,13 @@ Copy All Files To Your Server , and visit "index.html"(Responsive is Added Now).
 
 请注意：当您对源代码进行修改时，请注意好处理依赖关系。
 
-  **特别注意：此源代码全部依赖于QQ音乐官方API，若您将此JavaScript引用至其他页面，请添加:**<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>**
+  **特别注意：此源代码全部依赖于QQ音乐官方API，若您将此JavaScript引用至其他页面，请添加以下脚本:
+    `<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>`
     
 
 Special Note: When you're editting the source code, please pay attention to handling dependencies. 
 
-  **Special note: This source code depends on the official QQ music API, if you refer this JavaScript to other pages, please add this JavaScript:
+  **Special note: This source code depends on the official QQ music API, if you refer this JavaScript to other pages, please add this JScript:
     `<script src="https://y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>`
 ## 关于以后的事情/About The Things In The Future
 
