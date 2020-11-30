@@ -62,7 +62,7 @@ div.main>button:hover{
     transition: all .3s ease-in-out;
 }
 
-div#infocontain{
+div#infoContain{
     position: absolute;
     top: 25%;
     left: 25%;
@@ -87,7 +87,7 @@ img#album{
     border-radius: 5px;
 }
 
-p#songname{
+p#songName{
     white-space:nowrap;
     text-overflow:ellipsis;
     position: absolute;
@@ -116,7 +116,7 @@ p#singer{
     margin-top: 0px;
 }
 
-a#songmid{
+a#songMID{
     font-size: 14px;
     position: absolute;
     padding-top: 10px;
@@ -130,7 +130,7 @@ a#songmid{
 }
 
 
-button#playpause{
+button#playPause{
     position: absolute;
     margin: 0;
     padding: 0;
@@ -145,7 +145,7 @@ button#playpause{
     height: 15%;
     vertical-align: middle;
 }
-button#searchprogress{
+button#fetchProgress{
     position: absolute;
     margin: 0;
     font-size: 18px;
@@ -169,7 +169,7 @@ span#time{
     font-size:18px;
 }
 
-div#progressbar{
+div#progressBar{
     position: absolute;
     width: 70%;
     left:27.3%;
@@ -179,7 +179,7 @@ div#progressbar{
     height: 10px;
     text-align: left;
 }
-div#progressinner{
+div#progressBarInner{
     background-color: rgb(0,120,215);
     height: 100%;
     width: 0%;
@@ -228,11 +228,11 @@ a#download{
         background-color: rgb(13,13,13);
         color: white;
     }
-    div#infocontain{
+    div#infoContain{
         background-color:rgb(13,13,13);
         box-shadow: 0px 0px 5px 5px rgb(32,32,32);
     }
-    a#songmid,a#download,p#songname,p#singer,span#time,#time{
+    a#songMID,a#download,p#songName,p#singer,span#time{
         color:#FFFFFF;
     }
     div.copyrights{
@@ -243,7 +243,7 @@ a#download{
     div.copyrights>a{
         color: white;
     }
-    button#searchprogress,button#playpause{
+    button#fetchProgress,button#playPause{
         background-color: rgb(13,13,13);
         color: #FFF;
     }
@@ -288,7 +288,7 @@ a#download{
         border-radius: 999px;
         z-index: 10;
     }
-    div#infocontain{
+    div#infoContain{
         top: 50%;
         left: 50%;
         transform: translateY(-50%)translateX(-50%);
@@ -307,7 +307,7 @@ a#download{
         width: auto;
         margin: 0;
     }
-    p#songname{
+    p#songName{
         position: absolute;
         top: auto;
         bottom: 38.2%;
@@ -328,7 +328,7 @@ a#download{
         font-size: 1.75rem;
         z-index: 100;
     }
-    button#playpause{
+    button#playPause{
         width: 18.2%;
         height: 11%;
         top: auto;
@@ -347,7 +347,7 @@ a#download{
         margin: 0;padding: 0;
         z-index: 100;
     }
-    div#progressbar{
+    div#progressBar{
         width: 95%;
         height: 2.82%;
         border-radius: 999px;
@@ -356,7 +356,7 @@ a#download{
         bottom: 18.2%;
         transform: translateX(-50%) translateY(-50%);
     }
-    button#searchprogress,a#download,a#songmid{
+    button#fetchProgress,a#download,a#songMID{
         display: none;
     }
 }
