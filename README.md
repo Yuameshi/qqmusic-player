@@ -35,7 +35,7 @@ It's Wrote By My Self , Using Official API Of QQMusic
 
 [官方Demo/Official Demo](http://y.qq.com/m/demo/2017/player.html)
 
-[自制Demo/Self Made Demo](http://ilovecpp.pw/proj/qqmusic/)
+[自制Demo/Self Made Demo(GitHub Pages)](https://qqmusic.ilovecpp.pw/)
 
 
 ## 用法/Usage
