@@ -110,7 +110,7 @@ function print(text) {
 }
 
 function playByID(ipt) {
-	if (!ipt || ipt.toString() == "[object Object]") {
+	if (!ipt || ipt.toString() == "[object MouseEvent]") {
 		print("Error：Empty String！");
 		alert("曲目ID不能为空！");
 		return;
@@ -144,7 +144,7 @@ function playByID(ipt) {
 }
 
 function playByName(ipt) {
-	if (!ipt || ipt.toString() == "[object Object]") {
+	if (!ipt || ipt.toString() == "[object MouseEvent]") {
 		print("Info: No Initial Value! Getting Data From Input Box...");
 		var iptbox = document.getElementById("iptbox");
 		var ipt = iptbox.value;
