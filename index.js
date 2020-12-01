@@ -90,7 +90,7 @@ function pageDataSync() {
 	singer_element.innerHTML = singer;
 	album_element.alt = album;
 	album_element.src =
-		"http://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" +
+		"https://imgcache.qq.com/music/photo/album_300/20/300_albumpic_" +
 		albumid +
 		"_0.jpg";
 	songid_element.innerHTML = "曲目ID:" + player.data.song.mid;
