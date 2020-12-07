@@ -22,7 +22,23 @@ window.onload = function () {
 	document
 		.querySelector("#progressBarInner")
 		.addEventListener("click", changeProgress);
-	playByName("Limitless");
+	
+	var inital_search=decodeURIComponent(new URL(window.location.href).search);
+	inital_search=inital_search.toString();
+	console.log(inital_search);
+	if(inital_search.indexOf("&",inital_search.indexOf("search="))!=-1){
+		inital_search=inital_search.slice(inital_search.indexOf("search=")+7,inital_search.indexOf("&",inital_search.indexOf("search=")+1));
+	}
+	if(inital_search.indexOf("&",inital_search.indexOf("search="))==-1){
+		inital_search=inital_search.slice(inital_search.indexOf("search=")+7);
+	}
+	print("Inital Searching=>"+inital_search);
+	if(inital_search==""){
+		playByName("Limitless");
+	}else{
+		playByName(inital_search);
+		inital_search=null;
+	}
 	player.play();
 	print("Initial Song Loaded！");
 	print("Player State:" + player.state);
@@ -103,7 +119,7 @@ function pageDataSync() {
 
 function print(text) {
 	console.log(
-		"%c QQ Music Player API %c" + text,
+		"%c QQ Music API Player %c" + text,
 		"margin:0;padding:0;font-size:14px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(20,188,114);color:rgb(255,220,0);",
 		"font-size:14px;font-family:'Helvetica','Arial Unicode MS';background-color:rgb(255,220,0);color:rgb(17,190,115);margin:5px;margin-left:0;"
 	);
@@ -149,7 +165,7 @@ function playByName(ipt) {
 		var iptbox = document.getElementById("iptbox");
 		var ipt = iptbox.value;
 		print("Input Box Value：" + ipt);
-		iptbox.value = "";
+		//iptbox.value = "";
 	}
 	if (!ipt) {
 		print("Error：Empty String！");
