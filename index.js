@@ -22,22 +22,27 @@ window.onload = function () {
 	document
 		.querySelector("#progressBarInner")
 		.addEventListener("click", changeProgress);
-	
-	var inital_search=decodeURIComponent(new URL(window.location.href).search);
-	inital_search=inital_search.toString();
-	console.log(inital_search);
-	if(inital_search.indexOf("&",inital_search.indexOf("search="))!=-1){
-		inital_search=inital_search.slice(inital_search.indexOf("search=")+7,inital_search.indexOf("&",inital_search.indexOf("search=")+1));
+
+	var inital_search = decodeURIComponent(
+		new URL(window.location.href).search
+	);
+	inital_search = inital_search.toString();
+	if (inital_search.indexOf("&", inital_search.indexOf("search=")) != -1) {
+		inital_search = inital_search.slice(
+			inital_search.indexOf("search=") + 7,
+			inital_search.indexOf("&", inital_search.indexOf("search=") + 1)
+		);
+		console.log(inital_search);
+	} else {
+		inital_search = inital_search.slice(
+			inital_search.indexOf("search=") + 7
+		);
 	}
-	if(inital_search.indexOf("&",inital_search.indexOf("search="))==-1){
-		inital_search=inital_search.slice(inital_search.indexOf("search=")+7);
-	}
-	print("Inital Searching=>"+inital_search);
-	if(inital_search==""){
-		playByName("Limitless");
-	}else{
+	print("Inital Searching=>" + inital_search);
+	if (inital_search != "") {
 		playByName(inital_search);
-		inital_search=null;
+	} else {
+		playByName("Limitless");
 	}
 	player.play();
 	print("Initial Song Loaded！");
@@ -47,6 +52,7 @@ window.onload = function () {
 	var album = document.getElementById("album");
 	album.className = "empty";
 	var playpause = document.getElementById("playPause");
+	inital_search = null;
 	setInterval(function () {
 		autoFetchProgress();
 		stat = player.state;
